@@ -27,8 +27,8 @@
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                 </ul>
                 <div class="d-none d-lg-flex ms-3">
-                    <a href="html/masuk/masuk.php" class="btn btn-outline-light me-2">Masuk</a>
-                    <a href="html/daftar/daftar.php" class="btn btn-danger">Daftar</a>
+                    <a href="{{route('login')}}" class="btn btn-outline-light me-2">Masuk</a>
+                    <a href="{{route('signup')}}" class="btn btn-danger">Daftar</a>
                 </div>
             </div>
         </div>
@@ -43,8 +43,8 @@
             <li><a href="#kontak">Kontak</a></li>
         </ul>
         <hr>
-        <a href="html/masuk/masuk.php" class="btn btn-outline-light w-50 mb-2">Masuk</a>
-        <a href="html/daftar/daftar.php" class="btn btn-danger w-50">Daftar</a>
+        <a href="{{route('login')}}" class="btn btn-outline-light w-50 mb-2">Masuk</a>
+        <a href="{{route('signup')}}" class="btn btn-danger w-50">Daftar</a>
     </div>
 
     <!-- Beranda Section -->
@@ -52,7 +52,7 @@
         <div class="container-ber text-center">
             <h1 class="fw-bold">Ketahui jumlah emisi karbon yang dihasilkan dan temukan solusi untuk menguranginya!</h1>
             <div class="btn-wrapper">
-                <a href="html/hitung/hitung_gklogin.php" class="btn custom-outline-btn">Hitung Emisi Karbon kamu Sekarang!</a>
+                <a href="#" class="btn custom-outline-btn">Hitung Emisi Karbon kamu Sekarang!</a>
             </div>
         </div>        
     </section>

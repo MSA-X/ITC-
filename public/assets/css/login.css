@@ -1,6 +1,6 @@
 /* Fullscreen background */
 body {
-    background: url('../img/bekgron.jpg') no-repeat center center/cover;
+    background: url('../img/background.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
