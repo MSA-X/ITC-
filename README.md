@@ -1,61 +1,43 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# I-TransEC - Transport Carbon Calculator
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="{{asset('assets/img/logo.png')}}" width="300"/>
 
-## About Laravel
+👾 Aplikasi Menghitung Jejak Emisi Karbon Transportasi 👾
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 About This Application
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Transport Carbon Calculator adalah aplikasi yang membantu pengguna menghitung jejak karbon dari aktivitas transportasi mereka, seperti perjalanan menggunakan mobil, motor, atau transportasi umum. Dengan hanya memasukkan data seperti jarak perjalanan, moda transportasi, dan frekuensi penggunaan, aplikasi ini memberikan gambaran total emisi karbon yang dihasilkan. Di dalam aplikasi ini akan tersimpan semua data emisi karbon yang dihasilkan dari transportasi. Kemudian hasil total dari emisi karbon tersebut akan dikonversi menjadi kredit karbon (Carbon Credit).
 
-## Learning Laravel
+## Fitur Utama:
+- Menghitung total emisi karbon kendaraan
+- Menyimpan riwayat jejak emisi
+- Simulasi perjalanan
+- Rekomendasi untuk mengurangi jejak karbon
+- Menebus emisi yang telah dihasilkan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 👾 Developer
+Aplikasi ini dikembangkan oleh tim PBL TRPL 202.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Anggota Tim:
+1. Ahmad Hafizh Habibie Purba
+2. Alya Putri Rahmadani
+3. Elisabet Simamora
+4. Keisha Asri Delvia
+5. Megahnanda Sucimuliani Pasolo
+6. Muhammad Syifa Abdurrasyid
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📫 Contact Us:
 
-### Premium Partners
+[![WhatsApp](https://img.shields.io/badge/Whatsapp-green?logo=whatsapp&style=for-the-badge)](https://wa.me/6281234567890)  
+[![Instagram](https://img.shields.io/badge/Instagram-pink?logo=instagram&style=for-the-badge)](https://www.instagram.com/itransec/)  
+[![Email](https://img.shields.io/badge/Email-red?logo=gmail&style=for-the-badge)](mailto:itransec@gmail.com)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+⭐️ Thank you for visiting! ⭐️
