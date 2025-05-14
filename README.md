@@ -1,6 +1,6 @@
 # I-TransEC - Transport Carbon Calculator
 
-<img src="{{asset('assets/img/logo.png')}}" width="300"/>
+<img src="assets/img/logo.png" width="300"/>
 
 👾 Aplikasi Menghitung Jejak Emisi Karbon Transportasi 👾
 
