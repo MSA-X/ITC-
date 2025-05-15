@@ -52,7 +52,7 @@
         <div class="container-ber text-center">
             <h1 class="fw-bold">Ketahui jumlah emisi karbon yang dihasilkan dan temukan solusi untuk menguranginya!</h1>
             <div class="btn-wrapper">
-                <a href="#" class="btn custom-outline-btn">Hitung Emisi Karbon kamu Sekarang!</a>
+                <a href="{{ route('hitung_gklogin') }}" class="btn custom-outline-btn">Hitung Emisi Karbon kamu Sekarang!</a>
             </div>
         </div>        
     </section>
@@ -218,6 +218,7 @@
 
     <!-- Kontak Section -->
     <section id="kontak" class="kontak section">
+        <div class="box"></div>
         <div class="container text-left">
             <h2 class="fw-bold mb-4">Kontak Kami</h2>
             <p>Silakan hubungi kami melalui:</p>
@@ -230,6 +231,7 @@
                 <p>© 2025 PBL 202 | I-TransEC | Mahasiswa Teknologi Rekayasa Perangkat Lunak </p>
             </div>
         </div>
+
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
