@@ -40,24 +40,20 @@ document.getElementById('toggleSidebar').addEventListener('click', function() {
 document.getElementById('closeSidebar').addEventListener('click', function() {
     document.getElementById('sidebar').classList.remove('open');
 });
-// Ambil elemen sidebar dan tombol toggle
+
 const sidebar = document.getElementById('sidebar');
 const toggleSidebar = document.getElementById('toggleSidebar');
 
-// Fungsi untuk menutup sidebar jika lebar layar kecil
 function handleResize() {
-    if (window.innerWidth < 768) {  // Untuk layar kecil, seperti mobile
-        sidebar.classList.remove('open');  // Menutup sidebar
+    if (window.innerWidth < 768) {
+        sidebar.classList.remove('open');
     }
 }
 
-// Tambahkan event listener untuk resize (perubahan ukuran layar)
 window.addEventListener('resize', handleResize);
 
-// Fungsi untuk toggle sidebar
 toggleSidebar.addEventListener('click', function() {
-    sidebar.classList.toggle('open');  // Menampilkan atau menyembunyikan sidebar
+    sidebar.classList.toggle('open'); 
 });
 
-// Pastikan sidebar tertutup ketika pertama kali dimuat di layar kecil
 handleResize();

@@ -1,157 +1,92 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I-TransEC | Halaman Pengguna</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/logo.png') }}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/pengguna.css">
-    <link rel="stylesheet" href="../../css/sidebar_pengguna.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.min.css" rel="stylesheet">
+@extends('layouts.app')
 
-</head>
-<body>
-<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-  <div class="container">
-      <button class="navbar-toggler" type="button" id="toggleSidebar">
-          <i class="fas fa-bars"></i>
-      </button>
+@section('title', 'Halaman Pengguna')
 
-      <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav me-auto">
-              <li class="nav-item"><a class="nav-link" href="pengguna.php">Beranda</a></li>
-              <li class="nav-item"><a class="nav-link" href="../hitung/hitung.php">Hitung Emisi</a></li>
-              <li class="nav-item"><a class="nav-link" href="../simulasi/simulasi.php">Simulasi Perjalanan</a></li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-bs-toggle="dropdown" aria-expanded="false">Rekomendasi</a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="../rekomendasi/rekomendasi_perjalanan.php">Rekomendasi Perjalanan</a></li>
-                      <li><a class="dropdown-item" href="../rekomendasi/rekomendasi_kegiatan.php">Rekomendasi Kegiatan</a></li>
-                  </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="../riwayat/riwayat.php">Riwayat</a></li>
-          </ul>
-      </div>
-      <div class="dropdown d-flex align-items-center">
-      <?php if (isset($_SESSION['nama'])): ?>
-        <span class="text-white me-2 fw-semibold"><?php echo $_SESSION['nama']; ?></span>
-      <?php endif; ?>
-        <button class="btn profile ms-2 dropdown-toggle" id="profile" title="Profil" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-user-circle fa-lg"></i>
-        </button>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-            <li><a class="dropdown-item" href="../kelola/kelola_akun.php">Kelola Akun</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><button class="dropdown-item" id="logoutButton">Keluar</button></li>
-          </ul>
-      </div>
+@push('styles')
+  <!-- CSS eksternal CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.min.css">
+
+  <!-- CSS lokal -->
+  <link rel="stylesheet" href="{{ asset('assets/css/pengguna/pengguna.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/pengguna/sidebar_pengguna.css') }}">
+@endpush
+
+@section('content')
+
+<section id="beranda" class="beranda">
+  <div class="container-ber text-center">
+    <h1 class="fw-bold">
+      Selamat Datang,
+      <span class="text-danger me-2 fw-bold">
+        <?= htmlspecialchars($_SESSION['nama'] ?? 'Pengguna'); ?>!
+      </span>
+    </h1>
+      <p class="lead">Aplikasi untuk menghitung emisi karbon kendaraan</p>
+      <a href="../hitung/hitung.php" class="btn me-2" style="background-color: rgb(21, 61, 17); color: white; ">Hitung</a>
   </div>
-</nav>
+</section>
 
-<div class="container mt-3">
-  <?php if (!empty($success_message)): ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <?php echo $success_message; ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<section id="grafik" class="grafik">
+  <div class="grafik">
+    <h2 class="fw-bold">Grafik Perjalanan!</h2>
+
+    <div class="filter-container mb-4">
+      <label for="tanggalAwal" class="fw-semibold">Tanggal Awal:</label>
+      <input type="date" id="tanggalAwal" class="form-control d-inline-block me-2" style="max-width: 200px;">
+
+      <label for="tanggalAkhir" class="fw-semibold">Tanggal Akhir:</label>
+      <input type="date" id="tanggalAkhir" class="form-control d-inline-block me-2" style="max-width: 200px;">
+
+      <button id="terapkanFilter" class="btn btn-success">Terapkan</button>
     </div>
-  <?php endif; ?>
 
-  <?php if (!empty($error_message)): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <?php echo $error_message; ?>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="kontainer-grafik">
+      <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
     </div>
-  <?php endif; ?>
-</div>
+  </div>
+</section>
 
-<div class="sidebar" id="sidebar">
-  <button class="close-btn" id="closeSidebar">&times;</button>
-  <ul>
-      <li><a href="pengguna.php" class="nav-link">Beranda</a></li>
-      <li><a href="../hitung/hitung.php" class="nav-link">Hitung Emisi</a></li>
-      <li><a href="../simulasi/simulasi.php" class="nav-link">Simulasi Perjalanan</a></li>
-      <li>
-          <a href="javascript:void(0)" class="nav-link" onclick="toggleSidebarDropdown()">Rekomendasi <i class="fas fa-caret-down"></i></a>
-          <ul id="sidebarDropdown" style="display: none; list-style: none; padding-left: 15px;">
-              <li><a href="../rekomendasi/rekomendasi_perjalanan.php" class="nav-link">Rekomendasi Perjalanan</a></li>
-              <li><a href="../rekomendasi/rekomendasi_kegiatan.php" class="nav-link">Rekomendasi Kegiatan</a></li>
-          </ul>
-      </li>
-      <li><a href="../riwayat/riwayat.php" class="nav-link">Riwayat</a></li>
-  </ul>
-</div>
-    <section id="beranda" class="beranda">
-        <div class="container-ber text-center">
-        <h1 class="fw-bold">
-          Selamat Datang,
-          <span class="text-danger me-2 fw-bold">
-            <?= htmlspecialchars($_SESSION['nama'] ?? 'Pengguna'); ?>!
-          </span>
-        </h1>
-          <p class="lead">Aplikasi untuk menghitung emisi karbon kendaraan</p>
-          <a href="../hitung/hitung.php" class="btn me-2" style="background-color: rgb(21, 61, 17); color: white; ">Hitung</a>
+<section id="berita" class="berita-section py-5">
+  <div class="container">
+    <h3 class="section-title text-center mb-5 fw-bold">Berita Terkini!</h3>
+    <div class="berita-grid">
+
+      <div class="berita-card">
+        <img src="../../img/sponsor_2.jpg" alt="Berita 1" class="berita-img">
+        <div class="berita-text">
+          <h5 class="fw-bold">Berita 1</h5>
+          <p>Ini adalah isi singkat berita pertama yang menarik untuk dibaca.</p>
+          <button class="btn btn-outline-primary">Lihat</button>
         </div>
-    </section>
+      </div>
 
-    <section id="grafik" class="grafik">
-        <div class="grafik">
-          <h2 class="fw-bold">Grafik Perjalanan!</h2>
-
-          <div class="filter-container mb-4">
-            <label for="tanggalAwal" class="fw-semibold">Tanggal Awal:</label>
-            <input type="date" id="tanggalAwal" class="form-control d-inline-block me-2" style="max-width: 200px;">
-
-            <label for="tanggalAkhir" class="fw-semibold">Tanggal Akhir:</label>
-            <input type="date" id="tanggalAkhir" class="form-control d-inline-block me-2" style="max-width: 200px;">
-
-            <button id="terapkanFilter" class="btn btn-success">Terapkan</button>
-          </div>
-
-          <div class="kontainer-grafik">
-            <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
-          </div>
+      <div class="berita-card">
+        <img src="../../img/sponsor_2.jpg" alt="Berita 2" class="berita-img">
+        <div class="berita-text">
+          <h5 class="fw-bold">Berita 2</h5>
+          <p>Ini adalah isi singkat berita kedua yang informatif dan terbaru.</p>
+          <button class="btn btn-outline-primary">Lihat</button>
         </div>
-      </section>
-      
-      <section id="berita" class="berita-section py-5">
-        <div class="container">
-          <h3 class="section-title text-center mb-5 fw-bold">Berita Terkini!</h3>
-          <div class="berita-grid">
+      </div>
 
-            <div class="berita-card">
-              <img src="../../img/sponsor_2.jpg" alt="Berita 1" class="berita-img">
-              <div class="berita-text">
-                <h5 class="fw-bold">Berita 1</h5>
-                <p>Ini adalah isi singkat berita pertama yang menarik untuk dibaca.</p>
-                <button class="btn btn-outline-primary">Lihat</button>
-              </div>
-            </div>
-
-            <div class="berita-card">
-              <img src="../../img/sponsor_2.jpg" alt="Berita 2" class="berita-img">
-              <div class="berita-text">
-                <h5 class="fw-bold">Berita 2</h5>
-                <p>Ini adalah isi singkat berita kedua yang informatif dan terbaru.</p>
-                <button class="btn btn-outline-primary">Lihat</button>
-              </div>
-            </div>
-
-            <div class="berita-card">
-              <img src="../../img/I-TEC.png" alt="Berita 3" class="berita-img">
-              <div class="berita-text">
-                <h5 class="fw-bold">Berita 3</h5>
-                <p>Isi singkat berita ketiga, dengan informasi terkini yang bermanfaat.</p>
-                <button class="btn btn-outline-primary">Lihat</button>
-              </div>
-            </div>
-
-          </div>
+      <div class="berita-card">
+        <img src="../../img/I-TEC.png" alt="Berita 3" class="berita-img">
+        <div class="berita-text">
+          <h5 class="fw-bold">Berita 3</h5>
+          <p>Isi singkat berita ketiga, dengan informasi terkini yang bermanfaat.</p>
+          <button class="btn btn-outline-primary">Lihat</button>
         </div>
-      </section>
-      
+      </div>
+
+    </div>
+  </div>
+</section>
+@endsection
+
+@push('scripts')
+  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.all.min.js"></script>
@@ -256,7 +191,7 @@ Swal.fire({
 
 </script>
       
-      <script src="../../js/pengguna.js"></script>
-      <script src="../../js/sidebar_pengguna.js"></script>      
-</body>
-</html>
+      <script src="{{ asset('assets/js/pengguna/pengguna.js')}}"></script>
+      <script src="{{ asset('assets/js/pengguna/sidebar_pengguna.js')}}"></script>      
+
+@endpush

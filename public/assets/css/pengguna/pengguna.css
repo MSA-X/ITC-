@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('../img/bekgron.jpg') no-repeat center/cover;
+  background: url('/assets/img/background.jpg') no-repeat center/cover;
   color: rgb(255, 255, 255);
   padding: 10px;
   box-sizing: border-box;

@@ -10,7 +10,7 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function hitung()
+    public function hitung_gklogin()
     {
         return view('hitung_gklogin');
     }
