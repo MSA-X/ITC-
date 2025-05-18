@@ -54,10 +54,11 @@
             <div class="btn-wrapper">
                 <a href="{{ route('hitung_gklogin') }}" class="btn custom-outline-btn">Hitung Emisi Karbon kamu Sekarang!</a>
             </div>
-        </div>        
+        </div>      
     </section>
 
     <!-- Tentang Section -->
+
     <section id="tentang" class="tentang section">
         <div class="container">
           <h2 class="fw-bold text-center mb-4">Tentang Kami</h2>
@@ -79,6 +80,7 @@
           </div>
         </div>
     </section>
+    </div>
             
     <section id="berita" class="berita-section py-5">
         <div class="container">

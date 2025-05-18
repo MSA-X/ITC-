@@ -13,8 +13,8 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">Rekomendasi</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{ url('/rekomendasi/perjalanan') }}">Rekomendasi Perjalanan</a></li>
-            <li><a class="dropdown-item" href="{{ url('/rekomendasi/kegiatan') }}">Rekomendasi Kegiatan</a></li>
+            <li><a class="dropdown-item" href="{{ url('/rekomendasi_perjalanan') }}">Rekomendasi Perjalanan</a></li>
+            <li><a class="dropdown-item" href="{{ url('/rekomendasi_kegiatan') }}">Rekomendasi Kegiatan</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="{{ url('/riwayat') }}">Riwayat</a></li>
@@ -46,8 +46,8 @@
     <li>
       <a href="javascript:void(0)" class="nav-link" onclick="toggleSidebarDropdown()">Rekomendasi <i class="fas fa-caret-down"></i></a>
       <ul id="sidebarDropdown" style="display: none; list-style: none; padding-left: 15px;">
-        <li><a href="{{ url('/rekomendasi/perjalanan') }}" class="nav-link">Rekomendasi Perjalanan</a></li>
-        <li><a href="{{ url('/rekomendasi/kegiatan') }}" class="nav-link">Rekomendasi Kegiatan</a></li>
+        <li><a href="{{ url('/rekomendasi_perjalanan') }}" class="nav-link">Rekomendasi Perjalanan</a></li>
+        <li><a href="{{ url('/rekomendasi_kegiatan') }}" class="nav-link">Rekomendasi Kegiatan</a></li>
       </ul>
     </li>
     <li><a href="{{ url('/riwayat') }}" class="nav-link">Riwayat</a></li>

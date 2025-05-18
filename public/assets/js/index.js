@@ -2,6 +2,8 @@ const carousel = document.querySelector('.carousel');
 const items = document.querySelectorAll('.car');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
+const sections = document.querySelectorAll("section");
+
 let currentIndex = 0;
 
 function getItemsPerSlide() {
@@ -65,10 +67,44 @@ window.addEventListener('resize', () => {
 updateCarousel();
 
 // Animasi bagian .section jika diperlukan
-const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.1 });
 
-sections.forEach((section, index) => {
-  setTimeout(() => {
-    section.classList.add('show');
-  }, index * 300);
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+
+window.addEventListener('load', function () {
+    document.body.classList.add('fade-in');
+  });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function (
+    entries,
+    appearOnScroll
+  ) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add("visible");
+      appearOnScroll.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
 });

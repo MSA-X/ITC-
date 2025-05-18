@@ -1,0 +1,78 @@
+/* ===== Body Styling ===== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 20px;
+}
+
+/* ===== Header Section ===== */
+.header {
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: rgb(0, 0, 0);
+}
+
+.header p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* ===== Form Filter ===== */
+.form-container {
+  margin-bottom: 20px;
+}
+
+.form-container input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.form-container button {
+  padding: 8px 16px;
+  background-color: #0b6600;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #095300;
+}
+
+/* ===== Chart Section ===== */
+.chart-container {
+  background-color: #f6f6f6;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  margin: 0 auto 30px auto;
+  /* Flexbox tidak perlu karena canvas akan diatur Chart.js */
+}
+
+/* ===== Table Styling (optional enhancement for DataTables) ===== */
+#riwayatTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#riwayatTable th, #riwayatTable td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#riwayatTable thead {
+  background-color: #e0e0e0;
+}

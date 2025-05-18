@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
 <link rel="stylesheet" href="{{ asset('assets/css/pengguna/simulasi.css')}}">
-
+<link rel="stylesheet" href="{{ asset('assets/css/pengguna/sidebar_pengguna.css') }}">
 @endpush
 
 @section('content')

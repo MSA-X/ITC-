@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Perjalanan;
 
 class LayoutController extends Controller
 {
@@ -12,14 +13,22 @@ class LayoutController extends Controller
             'pengguna',
             'hitung',
             'simulasi',
-            'rekomendasi',
+            'rekomendasi_perjalanan',
+            'rekomendasi_kegiatan',
             'riwayat',
         ];
 
-        if (in_array($halaman, $halamanDiizinkan)) {
-            return view("pengguna.$halaman");
-        } else {
+        if (!in_array($halaman, $halamanDiizinkan)) {
             abort(404);
         }
+
+        if ($halaman === 'riwayat') {
+            // Kalau mau data perjalanan sesuai user login, ganti Perjalanan::all() dengan query berdasarkan user
+            $perjalanan = Perjalanan::all();
+            return view("pengguna.$halaman", compact('perjalanan'));
+        }
+
+        return view("pengguna.$halaman");
     }
+
 }
