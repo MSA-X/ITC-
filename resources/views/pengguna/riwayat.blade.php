@@ -13,50 +13,53 @@
 @endpush
 
 @section('content')
-<div class="pt-5"></div>
-<div class="header">
-    <h2>Hi!<span style="color: rgb(4, 80, 4)"> Pengguna!</span></h2>
-    <p>Ini Riwayat perjalanan, Kamu!</p>
+<div class="parent pt-5">
+  <div class="div1">
+    <div class="header">
+      <h2>Hi!<span style="color: rgb(4, 80, 4)"> Pengguna!</span></h2>
+      <p>Ini Riwayat perjalanan, Kamu!</p>
+    </div>
   </div>
 
-  <div class="form-container">
-    <input type="text" id="startDate" placeholder="Tanggal mulai">
-    <input type="text" id="endDate" placeholder="Tanggal selesai">
-    <button id="filterBtn">Submit</button>
+  <div class="div2">
+    <div class="form-container">
+      <input type="text" id="startDate" placeholder="Tanggal mulai">
+      <input type="text" id="endDate" placeholder="Tanggal selesai">
+      <button id="filterBtn">Submit</button>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="emissionChart"></canvas>
+    </div>
   </div>
-
-  <div class="chart-container">
-      <canvas id="emissionChart"></canvas>
+      
+  <div class="div3">
+    <div class="hist container mt-4">
+      <table id="riwayatTable" class="display">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Tujuan</th>
+            <th>Transportasi</th>
+            <th>Jarak (km)</th>
+            <th>Emisi (kg CO₂)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($perjalanan as $item)
+            <tr>
+              <td>{{ $item->tanggal }}</td>
+              <td>-</td> {{-- kolom tujuan belum ada di data, bisa dikosongkan atau diisi '-' --}}
+              <td>{{ $item->jenis_kendaraan }}</td>
+              <td>{{ $item->jarak_km }}</td>
+              <td>{{ $item->hasil_emisi }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
-
-
-  <div class="hist container mt-4">
-  <table id="riwayatTable" class="display">
-    <thead>
-      <tr>
-        <th>Tanggal</th>
-        <th>Tujuan</th>
-        <th>Transportasi</th>
-        <th>Jarak (km)</th>
-        <th>Emisi (kg CO₂)</th>
-      </tr>
-    </thead>
-    <tbody>
-  @foreach ($perjalanan as $item)
-    <tr>
-      <td>{{ $item->tanggal }}</td>
-      <td>-</td> {{-- kolom tujuan belum ada di data, bisa dikosongkan atau diisi '-' --}}
-      <td>{{ $item->jenis_kendaraan }}</td>
-      <td>{{ $item->jarak_km }}</td>
-      <td>{{ $item->hasil_emisi }}</td>
-    </tr>
-  @endforeach
-</tbody>
-
-  </table>
 </div>
-
-  </div>
 @endsection
 
 @push('scripts')
