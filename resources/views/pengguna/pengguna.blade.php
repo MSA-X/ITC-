@@ -1,7 +1,3 @@
-<?php
-  session(['email' => 'user1@example.com', 'nama' => 'User Dummy']);
-?>
-
 @extends('layouts.app')
 
 @section('title', 'Halaman Pengguna')
@@ -24,12 +20,12 @@
     <h1 class="fw-bold">
       Selamat Datang,
       <span class="text-danger me-2 fw-bold">
-         @if (session('nama'))
-          {{ session('nama') }}!
-        @else
-        Pengguna!
-        @endif
-      </span>
+          @if (Auth::check())
+              {{ Auth::user()->name }}!
+          @else
+              Pengguna!
+          @endif
+    </span>
     </h1>
       <p class="lead">Aplikasi untuk menghitung emisi karbon kendaraan</p>
       <a href="../hitung/hitung.php" class="btn me-2" style="background-color: rgb(21, 61, 17); color: white; ">Hitung</a>

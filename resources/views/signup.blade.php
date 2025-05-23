@@ -11,32 +11,33 @@
 </head>
 <body>
     <div class="signup-container">
-        <form class="signup-box" id="signupForm">
-            <h2 class="text-center">Daftar Akun</h2>
+        <form class="signup-box" id="signupForm" method="POST" action="{{ route('signup') }}">
+            @csrf            
+        <h2 class="text-center">Daftar Akun</h2>
 
             <div class="form-row">
                 <div class="form-column">
                     <div class="form-group">
                         <label for="name">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" placeholder="Masukkan nama lengkap">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan nama lengkap" value="{{ Session::get('name') }}">
                         <small class="error-message" id="nameError"></small>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email" value="{{ Session::get('email') }}">                        
                         <small class="error-message" id="emailError"></small>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Kata Sandi</label>
-                        <input type="password" class="form-control" id="password" placeholder="Buat kata sandi">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Buat kata sandi">                        
                         <small class="error-message" id="passwordError"></small>
                     </div>
 
                     <div class="form-group">
                         <label for="confirmPassword">Konfirmasi Kata Sandi</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Ulangi kata sandi">
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Ulangi kata sandi">                        
                         <small class="error-message" id="confirmPasswordError"></small>
                     </div>
 

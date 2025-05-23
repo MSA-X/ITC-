@@ -11,7 +11,7 @@
         <li class="nav-item"><a class="nav-link" href="{{ url('/simulasi') }}">Simulasi Perjalanan</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false">Rekomendasi</a>
+            data-bs-toggle="dropdown" aria-expanded="false">Rekomendasi</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{ url('/rekomendasi_perjalanan') }}">Rekomendasi Perjalanan</a></li>
             <li><a class="dropdown-item" href="{{ url('/rekomendasi_kegiatan') }}">Rekomendasi Kegiatan</a></li>
@@ -22,16 +22,23 @@
     </div>
 
     <div class="dropdown d-flex align-items-center">
-      @if(session('nama'))
-        <span class="text-white me-2 fw-semibold">{{ session('nama') }}</span>
-      @endif
+    @if(Auth::check())
+        <span class="text-white me-2 fw-semibold">{{ Auth::user()->name }}</span> <!-- Ganti name jika di tabel pakai nama -->
+    @else
+        Pengguna
+    @endif
       <button class="btn profile ms-2 dropdown-toggle" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-user-circle fa-lg"></i>
       </button>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
         <li><a class="dropdown-item" href="{{ url('/kelola-akun') }}">Kelola Akun</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><button class="dropdown-item" id="logoutButton">Keluar</button></li>
+        <li>
+        <form id = "logoutForm" method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" id="logoutButton" class="dropdown-item">Keluar</button>
+        </form>
+        </li>      
       </ul>
     </div>
   </div>

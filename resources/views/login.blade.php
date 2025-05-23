@@ -24,7 +24,7 @@
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ Session::get('email') }}" required autofocus autocomplete="username">
                         @error('email')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

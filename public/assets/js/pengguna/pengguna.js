@@ -81,22 +81,20 @@ setTimeout(function() {
 document.getElementById("logoutButton").addEventListener("click", function (e) {
 e.preventDefault();
 Swal.fire({
-  title: 'keluar dari Akun',
-  html: `
-    <p>Apakah anda yakin akan keluar?</p>
-    <img src="../../img/human.jpg" width="300" height="150" style="margin-top: 20px; border-radius:10px;">
-  `,
-  background: '#256020',
-  color: '#fff',
-  showDenyButton: true,
-  denyButtonText: 'Yakin banget!',
-  confirmButtonText: 'Enggak jadi deh..',
-  reverseButtons: true,
-  draggable: true,
-  confirmButtonColor: "#b4b4b4"
+    title: "Keluar dari Akun",
+    html: `<p>Apakah anda yakin akan keluar?</p>
+          <img src="/assets/img/ilustration.jpg" width="300" height="150" style="margin-top: 20px; border-radius:10px;">`,
+    background: "#256020",
+    color: "#fff",
+    showDenyButton: true,
+    denyButtonText: "Yakin banget!",
+    confirmButtonText: "Enggak jadi deh..",
+    reverseButtons: true,
+    draggable: true,
+    confirmButtonColor: "#b4b4b4",
 }).then((result) => {
-  if (result.isDenied) {
-    window.location.href = "../masuk/proses_keluar.php";
-  }
+    if (result.isDenied) {
+        document.getElementById("logoutForm").submit();
+    }
 });
 });
